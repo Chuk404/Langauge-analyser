@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Web Analyzer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #667eea; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 10px; padding: 30px; }
+        h1 { color: #333; margin-bottom: 20px; text-align: center; }
+        textarea { width: 100%; height: 200px; padding: 15px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; margin-bottom: 20px; }
+        .buttons { display: flex; gap: 10px; margin-bottom: 30px; }
+        button { padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .btn-analyze { background: #667eea; color: white; }
+        .btn-summarize { background: #10b981; color: white; }
+        .btn-clear { background: #ef4444; color: white; }
+        .results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .result-box { border: 1px solid #ddd; padding: 20px; border-radius: 5px; min-height: 200px; }
+        .loading { display: none; color: #667eea; }
+        footer { margin-top: 30px; text-align: center; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Modular Web Analyzer</h1>
+        <textarea id="inputText" placeholder="Enter text to analyze...">This is a sample text to test our application. I'm really excited about this project and think it has great potential!</textarea>
+        
+        <div class="buttons">
+            <button class="btn-analyze" onclick="analyzeSentiment()">📊 Analyze Sentiment</button>
+            <button class="btn-summarize" onclick="summarizeText()">📝 Summarize Text</button>
+            <button class="btn-clear" onclick="clearAll()">🗑️ Clear</button>
+        </div>
+        
+        <div class="results">
+            <div class="result-box">
+                <h3>Sentiment Analysis</h3>
+                <div id="sentimentResult">Click "Analyze Sentiment" to see results</div>
+                <div id="sentimentLoading" class="loading">⏳ Analyzing...</div>
+            </div>
+            <div class="result-box">
+                <h3>Text Summary</h3>
+                <div id="summaryResult">Click "Summarize Text" to see results</div>
+                <div id="summaryLoading" class="loading">⏳ Summarizing...</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Powered by Google Natural Language API & OpenAI GPT | University Project</p>
+        </footer>
+    </div>
+
+    <script>
+        async function analyzeSentiment() {
+            const text = document.getElementById('inputText').value;
+            document.getElementById('sentimentLoading').style.display = 'block';
+            document.getElementById('sentimentResult').innerHTML = '';
+            
+            // Simulate API call (replace with real API later)
+            setTimeout(() => {
+                document.getElementById('sentimentLoading').style.display = 'none';
+                document.getElementById('sentimentResult').innerHTML = `
+                    <p><strong>Score:</strong> 0.8 (Positive)</p>
+                    <p><strong>Magnitude:</strong> 1.2</p>
+                    <p>This text shows strong positive sentiment!</p>
+                `;
+            }, 1000);
+        }
+        
+        async function summarizeText() {
+            const text = document.getElementById('inputText').value;
+            document.getElementById('summaryLoading').style.display = 'block';
+            document.getElementById('summaryResult').innerHTML = '';
+            
+            // Simulate API call
+            setTimeout(() => {
+                document.getElementById('summaryLoading').style.display = 'none';
+                document.getElementById('summaryResult').innerHTML = `
+                    <p><strong>Summary:</strong></p>
+                    <p>This is a simulated summary. The actual OpenAI API will generate concise summaries based on your text.</p>
+                `;
+            }, 1500);
+        }
+        
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('sentimentResult').innerHTML = 'Click "Analyze Sentiment" to see results';
+            document.getElementById('summaryResult').innerHTML = 'Click "Summarize Text" to see results';
+        }
+        
+        // Initialize with sample analysis
+        window.onload = function() {
+            analyzeSentiment();
+            summarizeText();
+        }
+    </script>
+</body>
+</html>
