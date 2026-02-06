@@ -5,10 +5,10 @@ A web application that analyzes text using two AI services:
 - **Text Summarization** (OpenAI GPT API)
 
 ## Team Members
-- [Chukwunonso Nwagbo] - Integration & DevOps Lead
-- [Name] - Backend Lead 1 (Google NL API)
-- [Name] - Backend Lead 2 (OpenAI API)
-- [Name] - Frontend Lead
+- [Chukwunonso Nwagbo] - Integration & DevOps Lead   
+- [Name] - Backend Lead 1 (Google NL API)   
+- [Riccardo] - Backend Lead 2 (OpenAI API)
+- [Toprak] - Frontend Lead
 
 ## Project Structure
 
