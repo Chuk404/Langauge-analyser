@@ -19,6 +19,6 @@ We're building a smart translation comparison tool that doesn't just translate w
 
 
 ## Quick Start
-1. Clone: `git clone https://github.com/YOUR_USERNAME/modular-web-analyzer.git`
+1. Clone: `git clone https://github.com/Chuk404/SuperDeluxeLJMUproject.git`
 2. Backend: `cd backend && pip install -r requirements.txt`
-3. Frontend: Open `frontend/index.html` in browser
+3. Frontend: Open `frontend/index.html` in browser for the example website.
