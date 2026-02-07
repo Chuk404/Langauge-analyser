@@ -1,25 +1,22 @@
-# Modular Web Analyzer
+# SuperDeluxeLJMUProject
 
 A web application that analyzes text using two AI services:
-- **Sentiment Analysis** (Google Natural Language API)
-- **Text Summarization** (OpenAI GPT API)
-
-## Team Members
-- [Chukwunonso Nwagbo] - Integration & DevOps Lead   
-- [Name] - Backend Lead 1 (Google NL API)   
-- [Riccardo] - Backend Lead 2 (OpenAI API)
-- [Toprak] - Frontend Lead
+- **Text Tanslator** (OpenAI GPT API)
 
 ## Project Structure
 
 modular-web-analyzer/
 ├── backend/
-│ ├── app.py # Main Flask application
-│ ├── requirements.txt # Python dependencies
+│ ├── app.py # Spring application
+│ ├── requirements.txt # java
 │ └── .env.example # Environment variables template
 ├── frontend/
 │ └── index.html # User interface
-└── .gitignore # Ignore API keys and secrets
+└── .gitignore # 
+
+Project Summary: Translation Insight Hub
+We're building a smart translation comparison tool that doesn't just translate words, but shows you how and why different AI translators work differently - especially with slang, jokes, and cultural expressions.
+
 
 ## Quick Start
 1. Clone: `git clone https://github.com/YOUR_USERNAME/modular-web-analyzer.git`
