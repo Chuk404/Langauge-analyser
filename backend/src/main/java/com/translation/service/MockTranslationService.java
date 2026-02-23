@@ -13,8 +13,12 @@ public class MockTranslationService implements ITranslationService {
 
 	@Override
 	public POSTTranslationResponse translate(POSTTranslationRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		boolean error = false;
+		String translation = "Hallo";
+		
+		// Returning with no slang
+		return new POSTTranslationResponse(error, translation, null);
 	}
 	
 }

@@ -2,13 +2,13 @@ package com.translation.model;
 
 public class POSTTranslationRequest {
 	String text;
-	String target_lang;
+	String targetLanguage;
 	
 	public String getText() {
 		return text;
 	}
 	
 	public String target_lang() {
-		return target_lang;
+		return targetLanguage;
 	}
 }
