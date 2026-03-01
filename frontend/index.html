@@ -11,22 +11,30 @@
 
 <body>
     <header>
-        <div class="logo">Name and/or Logo </div>
+        <div class="logo">logo</div>
     </header>
 
     <main>
 
         <div class="card">
-            <select name="langInput" id="langInput">
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="it">Italian</option>
-                <option value="tr">Turkish</option>
+            <select name="inputLang" id="inputLang">
+                <option value="en">lang1</option>
+                <option value="fr">lang2</option>
+                <option value="it">lang3</option>
+                <option value="tr">lang4</option>
             </select>
 
-            <textarea id="input" placeholder="Enter text"></textarea>
+            <textarea id="inputBox" placeholder="Enter text"></textarea>
 
-            <button class="tts-button" id="ttsInput">
+            <button class="clear-button" id="clearInput">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#FFFFFF">
+                    <path
+                        d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
+                </svg>
+            </button>
+
+            <button class="tts-button" id="inputTTS">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                     fill="#FFFFFF">
                     <path
@@ -35,7 +43,7 @@
             </button>
         </div>
 
-        <button id="translateButton">
+        <button id="langSwitch">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
                 <path
                     d="m233-320 75 75q11 11 11 27.5T308-189q-12 12-28.5 12T251-189L108-332q-6-6-8.5-13T97-360q0-8 2.5-15t8.5-13l144-144q12-12 28-11.5t28 12.5q11 12 11.5 28T308-475l-75 75h247q17 0 28.5 11.5T520-360q0 17-11.5 28.5T480-320H233Zm494-240H480q-17 0-28.5-11.5T440-600q0-17 11.5-28.5T480-640h247l-75-75q-11-11-11-27.5t11-28.5q12-12 28.5-12t28.5 12l143 143q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L708-428q-12 12-28 11.5T652-429q-11-12-11.5-28t11.5-28l75-75Z" />
@@ -43,18 +51,26 @@
         </button>
 
         <div class="card">
-            <select name="langOutput" id="langOutput">
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="it">Italian</option>
-                <option value="tr">Turkish</option>
+            <select name="outputLang" id="outputLang">
+                <option value="en">lang1</option>
+                <option value="fr">lang2</option>
+                <option value="it">lang3</option>
+                <option value="tr">lang4</option>
             </select>
 
-            <div id="output">
+            <div id="outputBox">
                 Translation
             </div>
 
-            <button class="tts-button" id="ttsOutput">
+            <button class="copy-button" id="copyOutput">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#FFFFFF">
+                    <path
+                        d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360ZM200-80q-33 0-56.5-23.5T120-160v-520q0-17 11.5-28.5T160-720q17 0 28.5 11.5T200-680v520h400q17 0 28.5 11.5T640-120q0 17-11.5 28.5T600-80H200Z" />
+                </svg>
+            </button>
+
+            <button class="tts-button" id="outputTTS">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                     fill="#FFFFFF">
                     <path

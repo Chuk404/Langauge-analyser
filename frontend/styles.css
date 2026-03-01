@@ -1,5 +1,13 @@
 :root {
-    /* going to make the colours data driven, thatll go here */
+    --body-background: #000000;
+    --card-border: #a9a9a9;
+    --text-on-body: #ffffff;
+    --card-background: #eeeeee;
+    --text-on-card: #000000;
+    --textbox-background: #555555;
+    --text-on-textbox: #ffffff;
+    --alpha-hover: 20%;
+    --alpha-active: 30%;
 }
 
 * {
@@ -11,7 +19,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: var(--body-background);
 
     display: flex;
     flex-direction: column;
@@ -21,9 +29,9 @@ body {
 }
 
 header {
-    background-color: black;
+    background-color: var(--body-background);
 
-    color: white;
+    color: var(--text-on-body);
     font-size: large;
     text-align: center;
 
@@ -36,32 +44,33 @@ header {
     padding: 15px;
 }
 
+header svg {
+    fill: white;
+}
+
 main {
-    background-color: darkgray;
+    background-color: var(--card-border);
     border-radius: 25px;
 
     display: flex;
     justify-content: space-evenly;
     gap: 10px;
 
-    height: 85vh;
-    min-height: 340px;
     padding: 10px;
     margin: 10px;
 }
 
 .card {
-    background-color: #eee;
+    background-color: var(--card-background);
     border-radius: 20px;
 
-    color: black;
+    color: var(--text-on-card);
     text-align: center;
 
     position: relative;
     top: 0;
 
-    height: 100%;
-    min-height: 150px;
+    min-height: 42.5vh;
     width: 100%;
     padding: 10px;
 }
@@ -70,7 +79,9 @@ select {
     background-color: transparent;
     border-radius: 10px;
     border: none;
+    outline: none;
 
+    color: var(--text-on-card);
     font-size: medium;
     font-weight: bold;
 
@@ -79,23 +90,26 @@ select {
     cursor: pointer;
 }
 
-select:hover {
-    background-color: darkgray;
+select:hover,
+select:open {
+    background-color: rgb(from var(--text-on-card) r g b / var(--alpha-hover));
 }
 
 select:active {
-    background-color: #999;
+    background-color: rgb(from var(--text-on-card) r g b / var(--alpha-active));
 }
 
-#input,
-#output {
-    background-color: #555;
+#inputBox,
+#outputBox {
+    background-color: var(--textbox-background);
     border-radius: 15px;
     border: none;
+    border-right: 60px solid var(--textbox-background);
+    border-bottom: 60px solid var(--textbox-background);
     outline: none;
     resize: none;
 
-    color: white;
+    color: var(--text-on-textbox);
     text-align: left;
     font-size: inherit;
 
@@ -103,7 +117,7 @@ select:active {
     top: 3rem;
     left: 10px;
 
-    height: calc(100% - 3rem - 10px);
+    min-height: calc(100% - 3rem - 10px);
     width: calc(100% - 20px);
     padding: 10px;
     margin: 0;
@@ -112,13 +126,14 @@ select:active {
     user-select: text;
 }
 
-#input::placeholder {
-    color: white;
+#inputBox::placeholder {
+    color: var(--text-on-textbox);
     opacity: 50%;
 }
 
 /* Buttons */
 button {
+    background-color: transparent;
     border-radius: 50%;
     border: none;
 
@@ -133,45 +148,59 @@ button {
 
 svg {
     pointer-events: none;
+    fill: var(--text-on-textbox);
 }
 
-#translateButton {
-    background-color: black;
-    outline: 5px solid #eee;
+#langSwitch {
+    background-color: var(--textbox-background);
+    outline: 5px solid var(--card-background);
 
-    top: 77px;
+    top: 75px;
     z-index: 1;
 }
 
-#translateButton:hover {
-    background-color: #555;
+#langSwitch:hover {
+    background-color: color-mix(in srgb, var(--textbox-background), var(--text-on-textbox) var(--alpha-hover));
 }
 
-#translateButton:active {
-    background-color: #444;
+#langSwitch:active {
+    background-color: color-mix(in srgb, var(--textbox-background), var(--text-on-textbox) var(--alpha-active));
 }
 
 .tts-button {
-    background-color: transparent;
-
     bottom: 20px;
     left: 20px;
 }
 
-.tts-button:hover {
-    background-color: #888;
+.clear-button {
+    top: 55px;
+    right: 20px;
 }
 
-.tts-button:active {
-    background-color: #777;
+.copy-button {
+    bottom: 20px;
+    right: 20px;
+}
+
+.tts-button:hover,
+.clear-button:hover,
+.copy-button:hover {
+    background-color: rgb(from var(--text-on-textbox) r g b / var(--alpha-hover));
+}
+
+.tts-button:active,
+.clear-button:active,
+.copy-button:active {
+    background-color: rgb(from var(--text-on-textbox) r g b / var(--alpha-active));
 }
 
 /* Description */
 .desc {
-    background-color: white;
+    background-color: var(--card-background);
     border-radius: 20px;
-    outline: 10px solid darkgray;
+    outline: 10px solid var(--card-border);
 
+    color: var(--text-on-card);
     text-align: center;
     font-weight: bold;
 
@@ -180,10 +209,10 @@ svg {
 }
 
 .desc p {
-    background-color: #555;
+    background-color: var(--textbox-background);
     border-radius: 15px;
 
-    color: white;
+    color: var(--text-on-textbox);
     text-align: justify;
     font-weight: normal;
 
@@ -208,7 +237,7 @@ svg {
         height: 42.5vh;
     }
 
-    #translateButton {
+    #langSwitch {
         margin: -25px;
 
         position: relative;
