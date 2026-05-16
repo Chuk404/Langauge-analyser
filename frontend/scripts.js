@@ -8,6 +8,37 @@ const copyOutput = document.getElementById('copyOutput');
 const inputTTS = document.getElementById('inputTTS');
 const outputTTS = document.getElementById('outputTTS');
 
+
+// Loads languages.json and adds them into the selector slider
+async function loadLanguages() {
+    try {
+        const response = await fetch('languages.json');
+        if (!response.ok) throw new Error('ERROR: Language file failed to load');
+
+        const languages = await response.json()
+
+        Object.entries(languages).forEach(([langCode, langName]) => {
+            const optionIn = document.createElement('option');
+            optionIn.value = langCode;
+            optionIn.textContent = langName;
+            inputLang.appendChild(optionIn);
+
+            const optionOut = document.createElement('option');
+            optionOut.value = langCode;
+            optionOut.textContent = langName;
+            outputLang.appendChild(optionOut);
+
+        });
+
+        // Set default languages on the slider to minimise problems
+        inputLang.value = 'en';
+        outputLang.value = 'fr';
+
+    } catch (error) {
+        console.error("Error loading languages for dropdown menu", error);
+    }
+}
+
 async function translate() {
     const text = inputBox.value;
     const targetLanguage = outputLang.value;
@@ -70,3 +101,5 @@ outputTTS.addEventListener('click', () => {
     speech.lang = outputLang.value;
     window.speechSynthesis.speak(speech);
 });
+
+loadLanguages()
