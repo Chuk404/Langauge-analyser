@@ -1,7 +1,7 @@
 # SuperDeluxeLJMUProject
 
 A web application that analyzes text using two AI services:
-- **Text Tanslator** (OpenAI GPT API)
+- **Text Translator** (OpenAI GPT API)
 
 ## Project Structure
 

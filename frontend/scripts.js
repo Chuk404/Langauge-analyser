@@ -8,6 +8,11 @@ const copyOutput = document.getElementById('copyOutput');
 const inputTTS = document.getElementById('inputTTS');
 const outputTTS = document.getElementById('outputTTS');
 
+const inputFlag = document.getElementById('inputFlag');
+const outputFlag = document.getElementById('outputFlag');
+
+let languages = {};
+
 
 // Loads languages.json and adds them into the selector slider
 async function loadLanguages() {
@@ -15,17 +20,17 @@ async function loadLanguages() {
         const response = await fetch('languages.json');
         if (!response.ok) throw new Error('ERROR: Language file failed to load');
 
-        const languages = await response.json()
+        languages = await response.json()
 
-        Object.entries(languages).forEach(([langCode, langName]) => {
+        Object.entries(languages).forEach(([langCode, langData]) => {
             const optionIn = document.createElement('option');
             optionIn.value = langCode;
-            optionIn.textContent = langName;
+            optionIn.textContent = langData.name;
             inputLang.appendChild(optionIn);
 
             const optionOut = document.createElement('option');
             optionOut.value = langCode;
-            optionOut.textContent = langName;
+            optionOut.textContent = langData.name;
             outputLang.appendChild(optionOut);
 
         });
@@ -37,6 +42,19 @@ async function loadLanguages() {
     } catch (error) {
         console.error("Error loading languages for dropdown menu", error);
     }
+}
+
+function updateFlagIcon() {
+
+    // Do nothing if JSON file not read
+    if (!languages[inputLang.value] || !languages[outputLang.value]) return;
+
+    const inputCountry = languages[inputLang.value].imageCode;
+    const outputCountry = languages[outputLang.value].imageCode;
+
+    inputFlag.src = `https://flagcdn.com/w80/${inputCountry}.png`;
+    outputFlag.src = `https://flagcdn.com/w80/${outputCountry}.png`;
+
 }
 
 async function translate() {
@@ -86,6 +104,7 @@ langSwitch.addEventListener('click', () => {
     const temp = inputLang.value;
     inputLang.value = outputLang.value;
     outputLang.value = temp;
+    updateFlagIcon();
     translate();
 });
 
@@ -101,5 +120,9 @@ outputTTS.addEventListener('click', () => {
     speech.lang = outputLang.value;
     window.speechSynthesis.speak(speech);
 });
+
+// Dropdown Menu Updater
+inputLang.addEventListener('change', updateFlagIcon);
+outputLang.addEventListener('change', updateFlagIcon);
 
 loadLanguages()

@@ -120,6 +120,29 @@ select:active {
     background-color: rgb(from var(--text-on-card) r g b / var(--alpha-active));
 }
 
+.lang-selector {
+    display: flex;
+    align-items: center;       
+    justify-content: center;   
+    gap: 8px;                  
+    
+    position: absolute;        
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;              
+}
+
+.flag-icon {
+    width: 28px;               
+    height: 18px;
+    object-fit: cover;       
+    border-radius: 3px;        
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); 
+    
+    display: inline-block;
+}
+
 #inputBox,
 #outputBox {
     background-color: var(--textbox-background);

@@ -1,8 +1,8 @@
 {
-    "en": "English",
-    "fr": "French",
-    "it": "Italian",
-    "tr": "Turkish",
-    "es": "Spanish",
-    "de": "German"
+    "en": { "name": "English", "imageCode": "gb" },
+    "fr": { "name": "French", "imageCode": "fr" },
+    "it": { "name": "Italian", "imageCode": "it" },
+    "tr": { "name": "Turkish", "imageCode": "tr" },
+    "es": { "name": "Spanish", "imageCode": "es" },
+    "de": { "name": "German", "imageCode": "de" }
 }
