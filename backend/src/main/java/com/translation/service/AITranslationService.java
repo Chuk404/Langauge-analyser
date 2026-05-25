@@ -22,29 +22,51 @@ public class AITranslationService implements ITranslationService {
     @Value("${OPENROUTER_API_KEY}")
     private String apiKey;
 
+    private String getLanguageName(String code) {
+        switch (code) {
+            case "fr":
+                return "French";
+            case "it":
+                return "Italian";
+            case "tr":
+                return "Turkish";
+            case "de":
+                return "German";
+            case "es":
+                return "Spanish";
+            default:
+                return "English";
+        }
+    }
+
     @Override
     public POSTTranslationResponse translate(POSTTranslationRequest request) {
         try {
+
             // Build the prompt
-            String prompt = String.format(
-                    "Translate the following text to %s. "
-                    + "Respond in JSON format like this: "
+            String systemPrompt = String.format(
+                    "You are a professional translator. Translate text from to %s. "
+                    + "Always respond in this exact JSON format: "
                     + "{\"translation\": \"translated text here\", \"slangs\": [{\"word\": \"slang word\", \"meaning\": \"what it means\"}]} "
-                    + "If there are no slang words, return an empty array for slangs. "
-                    + "Text to translate: %s",
-                    request.target_lang(),
-                    request.getText()
+                    + "If there are no slang words return an empty array for slangs. "
+                    + "Never include anything outside the JSON.",
+                    getLanguageName(request.target_lang()),
+                    request.target_lang()
             );
 
             // Build the request body
             String requestBody = String.format("""
                 {
-                    "model": "google/gemma-4-31b-it:free",
+                    "model": "google/gemini-3.5-flash",
                     "messages": [
+                        {"role": "system", "content": "%s"},
                         {"role": "user", "content": "%s"}
                     ]
                 }
-                """, prompt.replace("\"", "\\\""));
+                """,
+                    systemPrompt.replace("\"", "\\\""),
+                    request.getText().replace("\"", "\\\"")
+            );
 
             // Send request to OpenRouter
             HttpClient client = HttpClient.newHttpClient();
