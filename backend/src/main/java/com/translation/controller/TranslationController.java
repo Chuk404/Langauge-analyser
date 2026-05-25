@@ -16,7 +16,7 @@ import com.translation.service.ITranslationService;
 public class TranslationController {
 	
 	@Autowired
-	@Qualifier("MockService")
+	@Qualifier("AIService")
 	ITranslationService service;
 
 	@PostMapping("translation")

@@ -289,3 +289,13 @@ svg {
         align-self: center;
     }
 }
+
+#slangBox {
+    background-color: var(--card-background);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 0 10px 10px 10px;
+    color: var(--text-on-card);
+    display: none;
+    width: calc(100% - 20px);
+}
