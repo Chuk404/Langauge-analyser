@@ -59,6 +59,7 @@ function updateFlagIcon() {
 
 async function translate() {
     const text = inputBox.value;
+    const sourceLanguage = inputLang.value;
     const targetLanguage = outputLang.value;
 
     if (text.trim() === '') return;
@@ -73,6 +74,7 @@ async function translate() {
             },
             body: JSON.stringify({
                 text: text,
+                sourceLanguage: sourceLanguage,
                 targetLanguage: targetLanguage
             })
         });

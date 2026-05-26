@@ -45,13 +45,13 @@ public class AITranslationService implements ITranslationService {
 
             // Build the prompt
             String systemPrompt = String.format(
-                    "You are a professional translator. Translate text from to %s. "
+                    "You are a professional translator. Translate text from %s to %s. "
                     + "Always respond in this exact JSON format: "
                     + "{\"translation\": \"translated text here\", \"slangs\": [{\"word\": \"slang word\", \"meaning\": \"what it means\"}]} "
                     + "If there are no slang words return an empty array for slangs. "
                     + "Never include anything outside the JSON.",
-                    getLanguageName(request.target_lang()),
-                    request.target_lang()
+                    getLanguageName(request.getSourceLanguage()),
+                    getLanguageName(request.getTargetLanguage())
             );
 
             // Build the request body
