@@ -87,8 +87,22 @@ async function translate() {
     }
 }
 
+// Only send translation request when the user has stopped typing
+let typingTimer;
+const doneTypingInterval = 800; // Time in millseconds (0.8 seconds)
 // Translate when user stops typing
-inputBox.addEventListener('input', translate);
+inputBox.addEventListener('input', () => {
+    // Reset timer when person types
+    clearTimeout(typingTimer);
+
+    // Starts the timer
+    if (inputBox.value.trim() !== '') {
+        typingTimer = setTimeout(translate, doneTypingInterval);
+
+    } else {
+        outputBox.textContent = '';
+    }
+});
 
 // Clear button
 clearInput.addEventListener('click', () => {
