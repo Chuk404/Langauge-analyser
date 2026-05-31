@@ -56,7 +56,16 @@ function updateFlagIcon() {
     outputFlag.src = `https://flagcdn.com/w80/${outputCountry}.png`;
 
 }
+function isValidInput(text) {
+    if (text.trim() === '') return false;
 
+    // Count letters in the text
+    const letters = text.replace(/[^a-zA-Z]/g, '').length;
+
+    // At least 2 letters and 50% of characters are letters
+    const letterRatio = letters / text.length;
+    return letters >= 2 && letterRatio >= 0.5;
+}
 async function translate() {
     const text = inputBox.value;
     const sourceLanguage = inputLang.value;
@@ -81,7 +90,7 @@ async function translate() {
 
         const data = await response.json();
         outputBox.textContent = data.translation;
-       
+
         if (data.slangs && data.slangs.length > 0) {
             slangBox.style.display = 'block';
             slangBox.innerHTML = '<h3>Slang Detected</h3>';
@@ -108,17 +117,22 @@ let typingTimer;
 const doneTypingInterval = 800; // Time in millseconds (0.8 seconds)
 // Translate when user stops typing
 inputBox.addEventListener('input', () => {
-    // Reset timer when person types
     clearTimeout(typingTimer);
 
-    // Starts the timer
     if (inputBox.value.trim() !== '') {
-        typingTimer = setTimeout(translate, doneTypingInterval);
-
+        if (!isValidInput(inputBox.value)) {
+            outputBox.textContent = 'Please enter valid text to translate.';
+            slangBox.style.display = 'none';
+            slangBox.innerHTML = '';
+        } else {
+            typingTimer = setTimeout(translate, doneTypingInterval);
+        }
     } else {
         outputBox.textContent = '';
+        slangBox.style.display = 'none';
+        slangBox.innerHTML = '';
     }
-});
+})
 
 // Clear button
 clearInput.addEventListener('click', () => {
