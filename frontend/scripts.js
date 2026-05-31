@@ -7,9 +7,9 @@ const clearInput = document.getElementById('clearInput');
 const copyOutput = document.getElementById('copyOutput');
 const inputTTS = document.getElementById('inputTTS');
 const outputTTS = document.getElementById('outputTTS');
-
 const inputFlag = document.getElementById('inputFlag');
 const outputFlag = document.getElementById('outputFlag');
+const slangBox = document.getElementById('slangBox');
 
 let languages = {};
 
@@ -81,9 +81,25 @@ async function translate() {
 
         const data = await response.json();
         outputBox.textContent = data.translation;
+       
+        if (data.slangs && data.slangs.length > 0) {
+            slangBox.style.display = 'block';
+            slangBox.innerHTML = '<h3>Slang Detected</h3>';
+            data.slangs.forEach(slang => {
+                const item = document.createElement('div');
+                item.className = 'slang-item';
+                item.innerHTML = `<strong>${slang.word}</strong> — ${slang.meaning}`;
+                slangBox.appendChild(item);
+            });
+        } else {
+            slangBox.style.display = 'none';
+            slangBox.innerHTML = '';
+        }
 
     } catch (error) {
         outputBox.textContent = 'Error connecting to server';
+        slangBox.style.display = 'none';
+        slangBox.innerHTML = '';
     }
 }
 

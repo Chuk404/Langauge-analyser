@@ -46,6 +46,7 @@ public class AITranslationService implements ITranslationService {
             // Build the prompt
             String systemPrompt = String.format(
                     "You are a professional translator. Translate text from %s to %s. "
+                    + "Always explain slang meanings in English regardless of the target language"
                     + "Always respond in this exact JSON format: "
                     + "{\"translation\": \"translated text here\", \"slangs\": [{\"word\": \"slang word\", \"meaning\": \"what it means\"}]} "
                     + "If there are no slang words return an empty array for slangs. "
