@@ -151,7 +151,27 @@ langSwitch.addEventListener('click', () => {
     inputLang.value = outputLang.value;
     outputLang.value = temp;
     updateFlagIcon();
-    translate();
+
+    // Store the text
+    const currentInput = inputBox.value;
+    const currentOutput = outputBox.textContent;
+
+    const invalidOutputs = [
+        'Translation', 
+        'Translating...', 
+        'Error connecting to server', 
+        'Please enter valid text to translate.'
+    ];
+    
+    if (!invalidOutputs.includes(currentOutput) && currentOutput.trim() !== '') {
+        inputBox.value = currentOutput;        
+        outputBox.textContent = currentInput;
+    }
+
+    else if (currentInput.trim() !== '') {
+        translate();
+    }
+    
 });
 
 // Text to speech
