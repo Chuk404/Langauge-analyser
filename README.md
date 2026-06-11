@@ -26,8 +26,6 @@ Version Control: GitHub
 Getting Started
 
 Prerequisites
-
-
 Java installed on your machine
 A terminal (VS Code terminal, Command Prompt, or any terminal)
 
@@ -35,8 +33,6 @@ Installation
 
 
 Clone the repository
-
-bashgit clone https://github.com/Chuk404/Language-analyser.git
 
 Open the project in VS Code or your preferred editor
 Open a Terminal  or press Ctrl + Shift + '
@@ -51,7 +47,6 @@ Open the frontend index.html file in your browser
 
 Usage
 
-
 Make sure the backend server is running (see above)
 Open the site in your browser
 Type a word or phrase containing slang into the input box
@@ -60,10 +55,10 @@ Get back a full translation and a cultural explanation of what it means
 Contributors
 
 
-Chuk404
-Daniels Bunka
-Matthieu Gaudet
-Toprak
+Chuk404 https://github.com/Chuk404
+Daniels Bunka  https://github.com/DanielsBunka
+Matthieu Gaudet  https://github.com/Matthieu-MG
+Toprak  https://github.com/TerraWispr
 
 Future Plans
 
